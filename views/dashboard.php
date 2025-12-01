@@ -19,7 +19,7 @@ if (!isset($_SESSION['user_id'])) {
             <div class="card bg-primary text-white mb-4">
                 <div class="card-body">Mis Préstamos</div>
                 <div class="card-footer d-flex align-items-center justify-content-between">
-                    <a class="small text-white stretched-link" href="#">Ver Detalles</a>
+                    <a class="small text-white stretched-link" href="prestamos/index.php">Ver Detalles</a>
                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                 </div>
             </div>
@@ -40,7 +40,7 @@ if (!isset($_SESSION['user_id'])) {
             <div class="card bg-success text-white mb-4">
                 <div class="card-body">Usuarios Registrados</div>
                 <div class="card-footer d-flex align-items-center justify-content-between">
-                    <a class="small text-white stretched-link" href="#">Ver Usuarios</a>
+                    <a class="small text-white stretched-link" href="usuarios/index.php">Ver Usuarios</a>
                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                 </div>
             </div>
