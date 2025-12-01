@@ -2,24 +2,14 @@
 require_once '../../config/db.php'; 
 require_once '../../includes/header.php'; 
 
-// Verificar permisos
-if ($_SESSION['user_rol'] !== 'admin') {
-    echo "<div class='alert alert-danger'>Acceso denegado</div>";
-    exit;
-}
+if ($_SESSION['user_rol'] !== 'admin') exit("Acceso denegado");
 
-// Obtener datos del libro actual
 $id = (int)$_GET['id'];
 $stmt = $pdo->prepare("SELECT * FROM libros WHERE id = ?");
 $stmt->execute([$id]);
 $libro = $stmt->fetch();
+if (!$libro) header("Location: index.php");
 
-if (!$libro) {
-    header("Location: index.php"); // Si no existe, volver
-    exit;
-}
-
-// Categorías
 $cats = $pdo->query("SELECT * FROM categorias WHERE activo = 1")->fetchAll();
 ?>
 
@@ -30,7 +20,7 @@ $cats = $pdo->query("SELECT * FROM categorias WHERE activo = 1")->fetchAll();
                 <h4>Editar Libro: <?= htmlspecialchars($libro['titulo']) ?></h4>
             </div>
             <div class="card-body">
-                <form action="../../controllers/libros.php" method="POST">
+                <form action="../../controllers/libros.php" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="accion" value="editar">
                     <input type="hidden" name="id" value="<?= $libro['id'] ?>">
                     
@@ -56,13 +46,33 @@ $cats = $pdo->query("SELECT * FROM categorias WHERE activo = 1")->fetchAll();
                         </div>
                     </div>
 
-                    <div class="mb-3">
-                        <label>Stock</label>
-                        <input type="number" name="stock" class="form-control" value="<?= $libro['stock'] ?>" required>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label>Editorial</label>
+                            <input type="text" name="editorial" class="form-control" value="<?= htmlspecialchars($libro['editorial']) ?>" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label>Año Publicación</label>
+                            <input type="number" name="anio_publicacion" class="form-control" value="<?= $libro['anio_publicacion'] ?>" required>
+                        </div>
                     </div>
 
-                    <button type="submit" class="btn btn-warning"><i class="fas fa-sync"></i> Actualizar</button>
-                    <a href="index.php" class="btn btn-secondary">Cancelar</a>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label>Stock</label>
+                            <input type="number" name="stock" class="form-control" value="<?= $libro['stock'] ?>" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label>Cambiar Portada (Opcional)</label>
+                            <input type="file" name="imagen_portada" class="form-control" accept="image/*">
+                            <?php if(!empty($libro['imagen_portada'])): ?>
+                                <small class="text-muted">Actual: <a href="../../<?= $libro['imagen_portada'] ?>" target="_blank">Ver imagen</a></small>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-warning w-100">Actualizar Datos</button>
+                    <a href="index.php" class="btn btn-secondary w-100 mt-2">Cancelar</a>
                 </form>
             </div>
         </div>
