@@ -44,8 +44,13 @@ if (isset($_SESSION['user_id'])) {
                 </form>
             </div>
             <div class="card-footer text-center py-3">
-                <div class="small"><a href="../index.php">Volver al inicio</a></div>
-            </div>
+    <div class="small">
+        <a href="registro.php">¿No tienes cuenta? ¡Regístrate aquí!</a>
+    </div>
+    <div class="small mt-2">
+        <a href="../index.php">Volver al inicio</a>
+    </div>
+</div>
         </div>
     </div>
 </div>
