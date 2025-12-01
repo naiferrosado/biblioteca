@@ -48,15 +48,6 @@ if (session_status() === PHP_SESSION_NONE) {
   </div>
 </nav>
 
-<div class="container"> ```
-
-#### B. Pie de Página (`includes/footer.php`)
-Cierra las etiquetas y carga el JavaScript de Bootstrap.
-
-```php
-</div> <footer class="text-center py-4 mt-5 border-top">
-    <p class="text-muted">&copy; <?php echo date('Y'); ?> Sistema de Gestión de Biblioteca. Proyecto Final.</p>
-</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
