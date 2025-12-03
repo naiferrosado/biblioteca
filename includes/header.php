@@ -75,6 +75,10 @@ if (isset($_SESSION['user_id'])) {
             <li class="nav-item"><a class="nav-link" href="<?= $base_url ?>/views/libros/index.php">Libros</a></li>
             <li class="nav-item"><a class="nav-link" href="<?= $base_url ?>/views/prestamos/index.php">Préstamos</a></li>
             
+            <?php if(isset($_SESSION['user_rol']) && $_SESSION['user_rol'] === 'admin'): ?>
+                <li class="nav-item"><a class="nav-link" href="<?= $base_url ?>/views/categorias/index.php">Categorías</a></li>
+            <?php endif; ?>
+            
             <li class="nav-item dropdown ms-lg-3">
                 <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     
