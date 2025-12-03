@@ -38,7 +38,7 @@ if (isset($_SESSION['user_id'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body { 
-            background-color: #f8f9fa; 
+            /* background-color: #f8f9fa; */ 
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -47,6 +47,7 @@ if (isset($_SESSION['user_id'])) {
         /* Ajuste para que el footer siempre quede abajo si se usa flex en body */
         .container { flex: 1; }
     </style>
+    <script src="<?= $base_url ?>/assets/js/theme.js" defer></script>
 </head>
 <body>
 
@@ -62,6 +63,13 @@ if (isset($_SESSION['user_id'])) {
     
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto align-items-center">
+        <!-- Botón de Tema -->
+        <li class="nav-item me-3">
+            <button class="btn btn-outline-light rounded-circle" id="theme-toggle" title="Cambiar tema">
+                <i class="fas fa-moon"></i>
+            </button>
+        </li>
+
         <?php if(isset($_SESSION['user_id'])): ?>
             <li class="nav-item"><a class="nav-link" href="<?= $base_url ?>/views/dashboard.php">Inicio</a></li>
             <li class="nav-item"><a class="nav-link" href="<?= $base_url ?>/views/libros/index.php">Libros</a></li>
