@@ -11,6 +11,9 @@ if (isset($_SESSION['user_id'])) {
     <div class="col-md-6 col-lg-5">
         <div class="card shadow-lg border-0 rounded-lg">
             <div class="card-header bg-primary text-white text-center py-3">
+                <div class="mb-2">
+                    <i class="fas fa-user-plus fa-4x"></i>
+                </div>
                 <h3 class="font-weight-light my-2">Crear Cuenta</h3>
             </div>
             <div class="card-body p-4">
@@ -24,33 +27,47 @@ if (isset($_SESSION['user_id'])) {
                 <form action="../controllers/auth.php" method="POST">
                     <input type="hidden" name="accion" value="registrar">
 
-                    <div class="form-floating mb-3">
-                        <input class="form-control" id="inputNombre" type="text" name="nombre" placeholder="Juan Pérez" required />
-                        <label for="inputNombre">Nombre Completo</label>
+                    <div class="mb-3">
+                        <label for="inputNombre" class="form-label">Nombre Completo</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            <input class="form-control" id="inputNombre" type="text" name="nombre" placeholder="Juan Pérez" required />
+                        </div>
                     </div>
 
-                    <div class="form-floating mb-3">
-                        <input class="form-control" id="inputEmail" type="email" name="email" placeholder="nombre@ejemplo.com" required />
-                        <label for="inputEmail">Correo Electrónico</label>
+                    <div class="mb-3">
+                        <label for="inputEmail" class="form-label">Correo Electrónico</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                            <input class="form-control" id="inputEmail" type="email" name="email" placeholder="nombre@ejemplo.com" required />
+                        </div>
                     </div>
 
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <div class="form-floating mb-3 mb-md-0">
-                                <input class="form-control" id="inputPassword" type="password" name="password" placeholder="Pass" required />
-                                <label for="inputPassword">Contraseña</label>
+                            <div class="mb-3 mb-md-0">
+                                <label for="inputPassword" class="form-label">Contraseña</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                    <input class="form-control" id="inputPassword" type="password" name="password" placeholder="Pass" required />
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-floating mb-3 mb-md-0">
-                                <input class="form-control" id="inputPasswordConfirm" type="password" name="password_confirm" placeholder="Confirm" required />
-                                <label for="inputPasswordConfirm">Confirmar</label>
+                            <div class="mb-3 mb-md-0">
+                                <label for="inputPasswordConfirm" class="form-label">Confirmar</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                    <input class="form-control" id="inputPasswordConfirm" type="password" name="password_confirm" placeholder="Confirm" required />
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="d-grid gap-2 mt-4">
-                        <button class="btn btn-primary btn-lg" type="submit">Registrarse</button>
+                        <button class="btn btn-primary btn-lg" type="submit">
+                            <i class="fas fa-user-plus me-2"></i> Registrarse
+                        </button>
                     </div>
                 </form>
             </div>
